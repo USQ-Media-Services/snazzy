@@ -12,6 +12,7 @@ icons = {};
 modules = [
 	'src/swiffy/runtime.js',
 	'src/snazzy.js',
+	'tmp/requestAnimationFrame.min.js',
 	'tmp/icons.js',
 ]
 

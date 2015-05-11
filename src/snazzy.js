@@ -43,6 +43,7 @@ snazzy = (function () {
 			for (var k in t.icons) {
 				var icon = t.icons[k], els;
 				document.body.innerHTML = document.body.innerHTML.replace(new RegExp('\\[' + k + '\\]', 'g'), '<div class="snazzy-icon snazzy-icon-' + k + '" style="width: ' + icon.width + 'px; height: ' + icon.height + 'px"></div>');
+				document.body.innerHTML = document.body.innerHTML.replace(new RegExp('\\[{' + k + '}\\]', 'g'), '[' + k + ']');
 			}
 			
 			t.raf.requestAnimationFrame(function () {

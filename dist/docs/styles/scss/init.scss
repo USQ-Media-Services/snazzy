@@ -1,0 +1,17 @@
+//misc settings
+@import 'config/_settings';
+@import 'config/_mixins';
+
+//frameworks
+
+@import "bourbon"; 
+@import "neat";
+@import "bitters/_bitters";
+
+
+//global things
+@import 'general/_reset';
+@import 'layout/_main';
+
+
+//pages

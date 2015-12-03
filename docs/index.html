@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" lang="" ng-app="Snazzy">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Snazzy: The Animated Icon Library</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/png" href="favicon.ico">
+</head>
+<body ng-controller="master">
+
+    <div class="wrapper">
+
+        <div class="menu">
+            <ul>
+                <li><img src="img/usqlogo.png"></li>
+                <li class="by"><a href="">Developed by Media Services</a></li>
+            </ul>
+        </div>
+
+        <header>
+            <div class="header_wrapper">
+                <h1>Snazzy Animated Icons</h1>
+                <p class="intro">Mobile-friendly HTML5 animated icons<br class="mob-hide"> that you can use in your Moodle course.</p>
+                <p class="psst">(Try them out! Move your mouse over any of the icons below.)</p>
+            </div>
+        </header>
+        
+        <section class="install">
+            <h3>Easy Installation</h3>
+            <p>To install and start using the icons, all you need to do is copy the following line of code and paste it at the top of the HTML of your course:</p>
+           <code>&lt;script src="https://lor.usq.edu.au/usq/items/8ca53a7e-7c8d-430a-b75b-5de785b62d90/0/snazzy.min.js"&gt;&lt;/script&gt;</code>
+            <p>Then exit the HTML editor! Then, as you're writing your content, wherever you want an icon appear, just type the shortcodes below Want an animated cloud? Just type <code class="neat">[{cloud}]</code>!</p>
+        </section>
+        
+        <hr>    
+        
+        <section class="icons-list">
+            <ul>
+                <li class="li-icon" ng-repeat="(title,icon) in icons">
+                    <span>[{{title}}]</span><br>
+                    <code><span>&lbrack;</span>{{title}}<span>&rbrack;</span></code>
+                </li>
+                
+            </ul>
+        </section>
+
+        <section class="benefits">
+
+            <div class="benefits_row">
+                <div class="b_left benefits_text">
+                    <h2>Bring Your Own Device.</h2>
+                    <p>Desktop, tablet, or phone, your icons will just work.</p>
+                </div>
+                <div class=" b_right benefits_img i_computer">
+                    <img src="img/computer.gif">
+                </div>
+
+            </div>
+        
+            <div class="benefits_row">
+                <div class="b_left benefits_text">
+                    <h2>Lives is LOR. Goes Everywhere.</h2>
+                    <p>The icons are delivered from the fast and stable USQ LOR servers.</p>
+                </div>
+                    <div class="b_right benefits_img i_plane">
+                    <img src="img/plane.gif">
+                </div>
+
+            </div>
+        
+            <div class="benefits_row">
+                <div class="b_left benefits_text">
+                    <h2>Save Time. Look Great.</h2>
+                    <p>We've done all the work so you focus on teaching.</p>
+                </div>
+                <div class=" b_right benefits_img i_clock">
+                    <img src="img/clock.gif">
+                </div>
+
+            </div>
+        </section>   
+
+        <section class="help">
+            <h1>Need some help?</h1>
+            <p>If you need some help with installing these icons, or have some ideas of the kind of icons you'd like to see<br class="mob-hide">included in the library, then please feel free to get in contact with multimedia via email or call 9799 1586.</p>
+        </section>
+    </div>
+
+    <script src="../dist/snazzy.min.js"></script>
+</body>
+</html>

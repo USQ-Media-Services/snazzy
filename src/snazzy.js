@@ -1,7 +1,6 @@
 snazzy = (function () {
 	var t = {
 		_timer: 0,
-		
 		raf: (function () {
 			var r = {},
 				lastTime = 0,
@@ -32,6 +31,7 @@ snazzy = (function () {
 
 			return r;
 		}()),
+		
 
 		create: function (element, icon) {
         	stage = new swiffy.Stage(element, icon.swiffyobject, {});
@@ -41,9 +41,11 @@ snazzy = (function () {
 		
 		replace: function () {
 			for (var k in t.icons) {
-				var icon = t.icons[k], els;
-				document.body.innerHTML = document.body.innerHTML.replace(new RegExp('\\[' + k + '\\]', 'g'), '<div class="snazzy-icon snazzy-icon-' + k + '" style="width: ' + icon.width + 'px; height: ' + icon.height + 'px"></div>');
-				document.body.innerHTML = document.body.innerHTML.replace(new RegExp('\\[{' + k + '}\\]', 'g'), '[' + k + ']');
+				var icon = t.icons[k],
+					_b = document.body,
+					els;
+				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[' + k + '\\]', 'g'), '<div class="snazzy-icon snazzy-icon-' + k + '" style="width: ' + icon.width + 'px; height: ' + icon.height + 'px"></div>');
+				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[{' + k + '}\\]', 'g'), '[' + k + ']');
 			}
 			
 			t.raf.requestAnimationFrame(function () {
@@ -52,7 +54,6 @@ snazzy = (function () {
 						els = document.querySelectorAll('.snazzy-icon-' + k)
 						for (var i in els) {
 							if (typeof els[i] === 'object') {
-								console.log(32)
 								t.create(els[i], t.icons[k])
 							}
 						}
@@ -62,11 +63,10 @@ snazzy = (function () {
 		},
 		
 		run: function () {
-			t._timer = (t._timer + 1) % 60;
-			if (t._timer === 0) {
-			}
+			//t._timer = (t._timer + 1) % 60;
+			//if (t._timer === 0) {
+			//}
 			t.replace()
-			//t.raf.requestAnimationFrame(t.run);
 		}
 	};
 

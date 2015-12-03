@@ -1,0 +1,307 @@
+body {
+	padding: 0px 20px 20px 20px;
+	text-align: center;
+
+	@include media($mobile) {
+		// overflow-x: hidden;
+	}
+
+}
+
+.mob-hide {
+	display: none;
+}
+
+// Let's start with a grid!
+
+.wrapper {
+	@include outer-container;
+		@include media($tablet) {
+			padding: 0 20px;
+		}
+	}
+
+// Menu!
+
+.menu {
+	text-align: left;
+	margin: 0.75em 0;
+	overflow-x: hidden;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.menu li:nth-child(1) {
+	float: left;
+	color: $USQCharcoal;
+}
+
+.menu .by {
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  overflow: hidden;
+
+
+	a {
+		color: $DarkWarm;
+			}
+
+	a:hover {
+		color: $SecOrange;
+	}
+
+}
+
+.menu li:nth-child(1),
+.menu .by {
+@include media($tablet) {
+		float: none;
+		margin: 0 auto;
+		text-align: center;
+		height: auto;
+	}
+}
+
+
+// Header!
+
+header {
+  height: 350px;
+  margin-bottom: ($base-spacing * 2.5);
+}
+
+
+header:before {
+  content: "";
+  position: absolute;
+  left:0px;
+  width: 100%;
+  height: 350px;
+  background-color: lighten( $CoolGray, 47%);
+  background-image: url('../img/top-bg.jpg');
+  background-size: cover;
+  z-index: -1;
+  box-shadow: 0px 0px 4px rgba(0,0,0,0.15);
+}
+
+.header_wrapper {
+	height: 350px;
+	display: flex;
+  	justify-content: center; /* align horizontal */ 
+  	align-items: center; /* align vertical */
+  	flex-direction: column;
+}
+
+p.psst {
+	font-size: 1em;
+	font-style: italic;
+	margin-top: 1em;
+}
+
+// Install!
+section.install {
+	margin-bottom: 8em;
+}
+
+section.install p {
+	@include span-columns(6);
+	@include shift(3);
+
+	@include media($tablet) {
+		@include span-columns(12);
+		@include shift(0);
+	}
+  
+}
+
+section.install code {
+	margin-bottom: 2em;
+
+	@include media($tablet) {
+		word-break: break-word;
+		white-space: nowrap;
+		white-space: normal;
+		max-width: 100%;
+	}
+}
+
+
+section.install code.neat {
+	padding: 0px;
+	margin: 0 2px;
+}
+
+// Icons!
+
+.icons-list {
+	text-align: center;
+	@include outer-container(50%);
+		@include media($tablet) {
+			@include outer-container;
+		}
+}
+
+li.li-icon {
+	@include span-columns(4);
+	height: 120px;
+	display: inline-block;
+	.snazzy-icon {
+  	margin: 0 auto;
+	}
+	* {
+		padding: none;
+		margin: none;
+	}
+
+
+	@include media($desktop) {
+		@include omega(3n);
+	}
+
+	@include media($tablet) {
+		@include span-columns(6);
+		@include omega(2n);
+	}
+}
+
+
+section.help {
+	clear: both;
+}
+
+section.icons-list li span {
+	display: inline-block;
+	* {
+		padding: none;
+		margin: none;
+	}
+}
+
+
+// Benefits!
+
+section.benefits {
+	margin-top: 3em;
+	margin-bottom: 5em;
+}
+
+section.benefits div {
+	height: 400px;
+	// clear: both;
+
+	@include media($tablet) {
+		height: auto;
+	}
+}
+
+section.benefits div p {
+	margin-bottom: 0px;
+}
+
+.benefits_row {
+	@include outer-container;
+	clear: both;
+}
+
+
+.benefits_row:before {
+	content: "";
+	height: 400px;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	// box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+	z-index: -1;
+	background-color: lighten( $CoolGray, 47%);
+}
+
+.benefits_row:nth-child(2n):before {
+	background: white;
+	color: red;
+}
+
+
+.b_left, .b_right {
+	@include span-columns(5);
+	@include media($tablet) {
+		float: none;
+		width: 100%;
+	}
+}
+
+.b_left {
+	@include shift(1);
+	@include media($tablet) {
+		@include shift(0);
+	}
+}
+
+.b_right {
+	// @include omega();
+}
+
+.benefits_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  overflow: hidden;
+  text-align: left;
+
+  @include media($tablet) {
+  	padding-top: 20px;
+  	text-align: center;
+  }
+
+}
+
+
+.i_computer, .i_plane, .i_clock  {
+	height: 260px;
+	display: flex;
+  	justify-content: center; /* align horizontal */ 
+  	align-items: center; /* align vertical */
+  	flex-direction: column;
+
+  	@include media($tablet) {
+  		padding: 40px;
+  	}
+
+}
+
+.benefits_lor {
+	text-align: right;
+}
+
+
+// Get Some Help
+section.help {
+	@include span-columns(6);
+	@include shift(3);
+
+	@include media($tablet) {
+		@include shift(0);
+		@include span-columns(12);
+	}
+
+}
+
+
+
+.test-outer {
+	@include outer-container;
+	height: 500px;
+	clear: both;
+}
+
+.test-left,
+.test-right {
+	@include span-columns(6);
+	outline: 1px solid cyan;
+}
+
+

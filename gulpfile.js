@@ -18,6 +18,7 @@ modules = [
 	'src/swiffy/runtime.js',
 	'src/snazzy.js',
 	'tmp/requestAnimationFrame.min.js',
+	'tmp/styles.min.js',
 	'tmp/icons.js',
 ]
 
@@ -25,6 +26,13 @@ modules = [
 gulp.task('Start', function() {
 	del.sync(['dist', 'tmp'], {force: true})
 	return gulp;
+});
+
+gulp.task('Minify css', function() {
+  return gulp.src('src/*.css')
+    .pipe(plugins.minifyCss({compatibility: 'ie8'}))
+    .pipe(plugins.concat('styles.min.css'))
+    .pipe(gulp.dest('tmp'));
 });
 
 gulp.task('Process icons', function() {
@@ -61,7 +69,9 @@ gulp.task('Copy docs', function() {
 	.pipe(gulp.dest('dist/docs'));
 });
 
-gulp.task('Concat files', ['Start', 'Process icons', 'Copy docs'], function() {
+gulp.task('Concat files', ['Start', 'Process icons', 'Copy docs', 'Minify css'], function() {
+	var css = fs.readFileSync('tmp/styles.min.css')
+	fs.writeFileSync('tmp/styles.min.js', 'var styles = document.createElement("link"); styles.rel = "stylesheet"; styles.href = "data:text/css;base64,' + new Buffer(css).toString('base64') + '";  document.body.appendChild(styles);')
 	return gulp.src(modules)
 	.pipe(plugins.concat('snazzy.min.js'))
 	.pipe(plugins.uglify())
@@ -88,7 +98,7 @@ gulp.task('default', ['build'], function () {
 
 // The same as the default, but without the watch
 gulp.task('build', ['Cleanup'], function() {
-	fs.writeFileSync('dist/snazzy.min.js', '/*\n\tSnazzy: The Animated Icon Library\n\tBuild date: ' + new Date().getTime() + ' (' + Date.create().format('{Dow} {dd}/{MM}/{yyyy} @ {HH}:{mm}') + ')\n*/\n\n' + fs.readFileSync('dist/snazzy.min.js').toString());
+	fs.writeFileSync('dist/snazzy.min.js', '/*\n\tSnazzy: The Animated Icon Library\n\tBuild date: ' + new Date().getTime() + ' (' + Date.create().format('{Dow} {dd}/{MM}/{yyyy} @ {HH}:{mm}') + ')\n*/\n\n' + fs.readFileSync('dist/snazzy.min.js').toString() + '');
 	fs.writeFileSync('dist/docs/index.html', fs.readFileSync('dist/docs/index.html').toString().replace('../dist/', '../'));
 	return gulp
 });

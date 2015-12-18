@@ -1,6 +1,12 @@
-
-.snazzy-icon, .snazzy-icon *  {
+.snazzy-icon {
 	display: inline-block;
 	vertical-align: middle;
+    margin-top: -3px;	
+}
+
+.snazzy-icon,
+.snazzy-icon * {
 	cursor: pointer;
+    width: 30px !important;	
+    height: 30px !important;
 }

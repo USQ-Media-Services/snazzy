@@ -44,8 +44,8 @@ snazzy = (function () {
 				var icon = t.icons[k],
 					_b = document.body,
 					els;
-				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[' + k + '\\]', 'g'), '<div class="snazzy-icon snazzy-icon-' + k + '" style="width: ' + icon.width + 'px; height: ' + icon.height + 'px"></div>');
-				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[{' + k + '}\\]', 'g'), '[' + k + ']');
+				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[' + k + '\\](?=([^\>]*\<[^\>]*\>)*[^\>]*$)', 'g'), '<div class="snazzy-icon snazzy-icon-' + k + '" style="width: ' + icon.width + 'px; height: ' + icon.height + 'px"></div>');
+				_b.innerHTML = _b.innerHTML.replace(new RegExp('\\[\\{' + k + '\\}\\](?=([^\>]*\<[^\>]*\>)*[^\>]*$)', 'g'), '[' + k + ']');
 			}
 			
 			t.raf.requestAnimationFrame(function () {
